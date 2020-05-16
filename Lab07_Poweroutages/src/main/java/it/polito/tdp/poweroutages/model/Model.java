@@ -34,11 +34,16 @@ public class Model {
 		solution=new ArrayList<>();
 		maxAffectedPeople=0;
 		
-		for(PowerOutages p:eventList) {
-			if(p.getNerc().equals(nerc)) {
-				eventListFiltered.add(p);
+		eventListFiltered=new ArrayList<>();
+		if(eventList!=null) {
+			for(PowerOutages p:eventList) {
+				if(p.getNerc()!=null && p.getNerc().equals(nerc)) {
+					eventListFiltered.add(p);
+				}
 			}
-		}
+		}else
+			System.out.println("EventList vuota");
+		
 		Collections.sort(eventListFiltered);
 
 		System.out.println("Event list filtered size: " + eventListFiltered.size());
